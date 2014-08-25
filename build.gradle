@@ -1,0 +1,31 @@
+buildscript {
+  repositories {
+    mavenCentral()
+    maven { url "http://repo.spring.io/plugins-release" }
+  }
+  dependencies {  classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE")  }
+}
+
+apply plugin: "java"
+apply plugin: "eclipse"
+apply plugin: "idea"
+apply plugin: "spring-boot"
+apply plugin: "war"
+
+jar {
+  baseName = "spring-rest-service-oauth"
+  version =  "0.1.0"
+}
+
+repositories {
+  mavenCentral()
+  maven { url "http://repo.spring.io/libs-release" }
+}
+
+dependencies {
+  compile("org.springframework.boot:spring-boot-starter-web")
+  compile("org.springframework.boot:spring-boot-starter-websocket")
+  compile("org.springframework:spring-messaging")
+}
+
+task wrapper(type: Wrapper) {  gradleVersion = "2.0"  }
